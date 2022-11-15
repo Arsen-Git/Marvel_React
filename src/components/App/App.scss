@@ -1,0 +1,13 @@
+.characters {
+  padding: 0 170px;
+  background: url("../../../public/img/home-bg.png") right bottom no-repeat;
+  position: relative;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+.imgBg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

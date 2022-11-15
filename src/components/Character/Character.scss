@@ -1,0 +1,73 @@
+.character {
+  align-self: start;
+  width: 425px;
+  max-height: 760px;
+  box-sizing: border-box;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+  &__head {
+    display: flex;
+    gap: 25px;
+    .character__info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .character__name {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+
+        color: #000000;
+        margin-bottom: 25px;
+      }
+    }
+  }
+  &__text {
+    width: 375px;
+    margin: 15px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #000000;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+    color: #000000;
+    margin-bottom: 13px;
+  }
+  .comics__list {
+    flex: 1;
+    padding: 0 2px 5px;
+    overflow-y: auto;
+    height: 375px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .comics {
+      box-sizing: border-box;
+      max-width: 375px;
+      cursor: pointer;
+      padding: 4px 10px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+
+      color: #000000;
+      background: #ffffff;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: transform 0.1s linear, box-shadow 0.2s linear;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}

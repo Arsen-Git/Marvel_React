@@ -1,0 +1,27 @@
+.red {
+  background: linear-gradient(-45deg, transparent 10px, #9f0013 0) !important;
+}
+.long {
+  margin: 25px auto 45px;
+  width: 170px !important;
+  padding: 10px 50px;
+}
+.btn {
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100px;
+  height: 38px;
+  padding: 11px 18px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #ffffff;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: linear-gradient(-45deg, transparent 10px, #5c5c5c 0);
+  transition: transform 0.2s linear;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
