@@ -1,24 +1,44 @@
 import "./Random.scss";
 import "../../global.scss";
+import Spinner from "../Spinner/Spinner";
 
-export default function Random() {
+import React from "react";
+import axios from "axios";
+
+export default function Random(props) {
+  const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [imgUrl, setImgUrl] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+
+  const getRandomItem = async () => {
+    setLoading(true);
+    const id = Math.floor(Math.random() * (1009637 - 1009137) + 1009137);
+    const res = await axios.get(
+      `https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=3f46bb5575fb9ef6fdaa0d96dec50353`
+    );
+    randomItemLoaded(res.data.data.results[0]);
+  };
+
+  const randomItemLoaded = (item) => {
+    setName(item.name);
+    setDescription(item.description);
+    setImgUrl(item.thumbnail.path + "." + item.thumbnail.extension);
+    setLoading(false);
+  };
+
+  React.useEffect(() => {
+    getRandomItem();
+  }, []);
+
   return (
     <section className="random">
       <div className="random__left">
-        <img src="./img/thor.png" alt="character" />
-        <div className="character__info">
-          <h2 className="character__name">Thor</h2>
-          <p className="character__text">
-            As the Norse God of thunder and lightning, Thor wields one of the
-            greatest weapons ever made, the enchanted hammer Mjolnir. While
-            others have described Thor as an over-muscled, oafish imbecile, he's
-            quite smart and compassionate...
-          </p>
-          <div className="character__btnsGroup">
-            <button className="btn red">HOMEPAGE</button>
-            <button className="btn">WIKI</button>
-          </div>
-        </div>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <View name={name} description={description} imgUrl={imgUrl} />
+        )}
       </div>
       <div className="random__right">
         <h2 className="random__title">
@@ -26,7 +46,9 @@ export default function Random() {
           <br /> Do you want to get to know him better?
         </h2>
         <h2 className="random__subtitle">Or choose another one</h2>
-        <button className="btn red">TRY IT</button>
+        <button onClick={getRandomItem} className="btn red">
+          TRY IT
+        </button>
         <img
           width={203}
           height={189}
@@ -38,3 +60,23 @@ export default function Random() {
     </section>
   );
 }
+
+const View = (props) => {
+  return (
+    <>
+      <img width={180} height={180} src={props.imgUrl} alt="character" />
+      <div className="character__info">
+        <h2 className="character__name">{props.name}</h2>
+        <p className="random__character__text">
+          {props.description
+            ? props.description
+            : "No description for this character"}
+        </p>
+        <div className="character__btnsGroup">
+          <button className="btn red">HOMEPAGE</button>
+          <button className="btn">WIKI</button>
+        </div>
+      </div>
+    </>
+  );
+};

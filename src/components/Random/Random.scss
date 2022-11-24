@@ -23,7 +23,8 @@
 
         color: #000000;
       }
-      .character__text {
+      .random__character__text {
+        overflow-y: auto;
         width: 265px;
         height: 90px;
         font-weight: 400;
