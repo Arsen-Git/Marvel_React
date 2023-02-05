@@ -8,9 +8,10 @@ export default function CardList(props) {
   const [items, setItems] = React.useState([]);
   const [offset, setOffset] = React.useState(360);
   const [loading, setLoading] = React.useState(false);
+  const [newLoading, setNewLoading] = React.useState(false);
 
   const getAllitems = async () => {
-    setLoading(true);
+    setNewLoading(true);
     const res = await axios.get(
       `https://gateway.marvel.com:443/v1/public/characters?limit=9&offset=${offset}&apikey=3f46bb5575fb9ef6fdaa0d96dec50353`
     );
@@ -21,6 +22,7 @@ export default function CardList(props) {
     setItems([...items, ...newItems]);
     setOffset(offset + 9);
     setLoading(false);
+    setNewLoading(false);
   };
 
   const onSelectItem = async (id) => {
@@ -31,6 +33,7 @@ export default function CardList(props) {
   };
 
   React.useEffect(() => {
+    setLoading(true);
     getAllitems();
   }, []);
 
@@ -43,6 +46,7 @@ export default function CardList(props) {
           items={items}
           onSelectItem={onSelectItem}
           getAllitems={getAllitems}
+          newLoading={newLoading}
         />
       )}
     </ul>
@@ -60,9 +64,13 @@ const View = (props) => {
           onSelect={() => props.onSelectItem(item.id)}
         />
       ))}
-      <button onClick={props.getAllitems} className="btn red long">
-        LOAD MORE
-      </button>
+      {props.newLoading ? (
+        <Spinner />
+      ) : (
+        <button onClick={props.getAllitems} className="btn red long">
+          LOAD MORE
+        </button>
+      )}
     </>
   );
 };

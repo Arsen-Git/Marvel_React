@@ -1,11 +1,11 @@
-export default function Spinner() {
+export default function Error() {
   return (
     <img
       width={150}
       height={150}
       style={{ margin: "0 auto" }}
-      src="./img/Infinity-0.7s-200px.gif"
-      alt="spinner"
+      src="./img/error404.jpg"
+      alt="error"
     />
   );
 }
