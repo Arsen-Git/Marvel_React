@@ -1,5 +1,7 @@
 import "./Header.scss";
 
+import { NavLink } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
@@ -9,9 +11,21 @@ export default function Header() {
         </h1>
       </div>
       <ul className="header__menu">
-        <li className="header__menu__item active">Characters</li>
+        <NavLink
+          end
+          to={"/"}
+          style={({ isActive }) => ({ color: isActive ? "#9f0013" : "black" })}
+        >
+          <li className="header__menu__item active">Characters</li>
+        </NavLink>
         <span>/</span>
-        <li className="header__menu__item">Comics</li>
+        <NavLink
+          end
+          to={"/comics"}
+          style={({ isActive }) => ({ color: isActive ? "#9f0013" : "black" })}
+        >
+          <li className="header__menu__item">Comics</li>
+        </NavLink>
       </ul>
     </header>
   );

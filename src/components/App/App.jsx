@@ -1,27 +1,18 @@
-import "./App.scss";
-
 import Header from "../Header/Header";
-import Random from "../Random/Random";
-import CardList from "../CardList/CardList";
-import Character from "../Character/Character";
+import CharactersPage from "../../pages/Characters";
+import ComicsPage from "../../pages/Comics";
 
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
-  const [selectedItem, setSelectedItem] = React.useState({});
-
-  const onSelectItem = (item) => {
-    setSelectedItem(item);
-  };
-
   return (
-    <>
+    <Router>
       <Header />
-      <Random />
-      <section className="characters">
-        <CardList onSelectItem={onSelectItem} />
-        <Character item={selectedItem} />
-      </section>
-    </>
+      <Routes>
+        <Route exact path="/" element={<CharactersPage />} />
+        <Route path="/comics" element={<ComicsPage />} />
+      </Routes>
+    </Router>
   );
 }

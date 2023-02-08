@@ -1,0 +1,24 @@
+.comic {
+  cursor: pointer;
+  width: 225px;
+  transition: transform 0.1s linear;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &__title {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #000000;
+  }
+  &__price {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
