@@ -58,10 +58,10 @@ const View = (props) => {
       {props.items.map((item) => (
         <Comic
           key={item.id}
+          id={item.id}
           imgUrl={item.thumbnail.path + "." + item.thumbnail.extension}
           title={item.title}
           price={item.prices[0].price}
-          onSelect={() => props.onSelectItem(item.id)}
         />
       ))}
       {props.newLoading ? (

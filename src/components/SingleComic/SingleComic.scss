@@ -1,0 +1,46 @@
+.comic__content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px;
+  .comic__info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    &__title {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 26px;
+
+      color: #000000;
+    }
+    &__text {
+      max-width: 550px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: #000000;
+    }
+    &__price {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+
+      color: #9f0013;
+    }
+  }
+}
+
+.comic__link {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #000000;
+  transition: transform 0.1s linear;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

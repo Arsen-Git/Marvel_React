@@ -20,7 +20,6 @@ export default function Header() {
         </NavLink>
         <span>/</span>
         <NavLink
-          end
           to={"/comics"}
           style={({ isActive }) => ({ color: isActive ? "#9f0013" : "black" })}
         >
